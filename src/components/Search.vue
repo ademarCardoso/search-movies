@@ -18,11 +18,12 @@
       </svg>
     </button>
 
-    <h2 class="text--subtitle">Busque seus filmes favoritos!</h2>
-
     <Message :termMessage="terms" v-if="response === undefined"/>
 
     <Post :results="response"/>
+
+    <Footer />
+    
   </div>
 </template>
 
@@ -31,12 +32,14 @@ import { debounce } from 'lodash'
 import getMovies from '../services/index'
 import Post from './Post'
 import Message from './Message'
+import Footer from './Footer'
 
 export default {
   name: 'Search',
   components: {
     Post,
-    Message
+    Message,
+    Footer
   },
   data: () =>({
     terms: '',
@@ -67,17 +70,23 @@ export default {
 .search {
   width: 100%
 }
+
 h2 {
   font-family: 'Lexend Deca', sans-serif;
 }
+
 .search__input {
   font-family: 'Lexend Deca', sans-serif;
   display: flex;
-  width: 70%;
+  width: 80%;
   height: 30px;
   font-size: 1.6em;
   margin: 0 auto;
+  margin-bottom: 15px;
+  border: 2px solid #EDEDED;
+  border-radius: 5px;
 }
+
 .clean--term {
   width: 30px;
   height: 30px;
@@ -85,13 +94,9 @@ h2 {
   background-color: none;
   border: none;
   cursor: pointer;
-}
-.clean--term {
+  right: 150px;
+  top: 88px;
   position: absolute;
-  right: 225px;
-  top: 13px;
 }
-.text--subtitle {
-  text-align: center;
-}
+
 </style>
